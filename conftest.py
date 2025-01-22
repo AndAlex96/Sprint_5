@@ -2,6 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
+from locators import LocatorsSite
 import pytest
 import random
 import string
@@ -12,9 +13,7 @@ import string
 def setup_registration():
     driver = webdriver.Chrome()
     driver.get("https://stellarburgers.nomoreparties.site/")
-    WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located((By.XPATH, "/html/body/div/div/header/nav/a")))
-    driver.find_element(By.XPATH, "/html/body/div/div/header/nav/a").click() # Кнопка Личный кабинет
-    driver.find_element(By.XPATH, ".//div/main/div/div/p[1]/a").click() # Кнопка зарегистрироваться
+
     yield driver
     driver.quit()
 
@@ -28,4 +27,3 @@ def random_email():
         return email
 
     return generate_email
-
