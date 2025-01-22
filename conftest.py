@@ -12,6 +12,7 @@ import string
 @pytest.fixture
 def setup_registration():
     driver = webdriver.Chrome()
+
     driver.get("https://stellarburgers.nomoreparties.site/")
 
     yield driver
